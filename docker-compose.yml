@@ -1,0 +1,15 @@
+version: "3.9"
+name: bot-scraper
+
+services:
+  workua_bot:
+    build: .
+    container_name: workua_bot
+    restart: unless-stopped
+    environment:
+      - BOT_TOKEN=${BOT_TOKEN}
+      - SCRAPER_PROXY=${SCRAPER_PROXY:-}
+      - SCRAPER_UA=${SCRAPER_UA:-}
+    volumes:
+      - .:/app
+    shm_size: '1gb'
